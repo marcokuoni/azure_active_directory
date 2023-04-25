@@ -10,8 +10,8 @@ use Loader;
 class Controller extends Package
 {
 
-    protected $appVersionRequired = '8.1.0';
-    protected $pkgVersion = '1.0.0';
+    protected $appVersionRequired = '9.1.3';
+    protected $pkgVersion = '2.0.0';
     protected $pkgHandle = 'azure_active_directory';
     protected $pkgName = 'Azure Active Directory';
     protected $pkgDescription = 'Authorize with Azure Active DIrectory';
