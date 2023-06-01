@@ -88,7 +88,8 @@ if ($user->getUserID() && $user->checkLogin()) {
                 } else {
                     svg.attr('fill', 'rgb(155,155,155)');
                 }
-                Concrete.event.bind('AuthenticationTypeSelected', function(e, handle) {
+                window.addEventListener('AuthenticationTypeSelected', function(e) {
+                    const handle = e.detail.handle;
                     if (handle === 'community') {
                         var color = $('ul.auth-types li.active').css('color');
                         svg.attr('fill', color);
