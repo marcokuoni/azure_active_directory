@@ -44,17 +44,25 @@ class AadService extends AbstractService
     {
         $body = json_decode($responseBody, true);
 
-        if (isset($body['error'])) {
+        if (array_key_exists('hint', $body) && array_key_exists('error', $body) && isset($body['error'])) {
             throw new TokenResponseException($body['hint']);
         }
 
         $token = new StdOAuth2Token();
-        $token->setAccessToken($body['access_token']);
-        $token->setRefreshToken($body['refresh_token']);
-        $token->setLifetime($body['expires_in']);
+        if (array_key_exists('access_token', $body)) {
+            $token->setAccessToken($body['access_token']);
+        }
+        if (array_key_exists('refresh_token', $body)) {
+            $token->setRefreshToken($body['refresh_token']);
+        }
+        if (array_key_exists('expires_in', $body)) {
+            $token->setLifetime($body['expires_in']);
+        }
 
         // Store the id_token as an "extra param"
-        $token->setExtraParams(['id_token' => $body['id_token']]);
+        if (array_key_exists('id_token', $body)) {
+            $token->setExtraParams(['id_token' => $body['id_token']]);
+        }
 
         return $token;
     }
