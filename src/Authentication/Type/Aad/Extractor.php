@@ -124,11 +124,18 @@ class Extractor extends LazyExtractor
             return json_decode($this->service->request(self::USER_PATH), true)['data'];
         }
 
-        $decoder = new Parser();
-        $idToken = $decoder->parse($idTokenString);
+        if (class_exists(TokenParser::class)) {
+            $decoder = new TokenParser(new JoseEncoder());
+            $token = $decoder->parse($idTokenString);
+            $claims = $token->claims()->all();
+        } else {
+            $decoder = new Parser();
+            $token = $decoder->parse($idTokenString);
+            $claims = $token->getClaims();
+        }
 
         return [
-            'claims' => $idToken->getClaims()
+            'claims' => $claims
         ];
     }
 }
