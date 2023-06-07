@@ -1,8 +1,12 @@
 <?php
 namespace Concrete\Package\AzureActiveDirectory\Authentication\Type\Aad;
 
-use Lcobucci\JWT\Claim;
-use Lcobucci\JWT\Parser;
+use Lcobucci\JWT\{
+    Claim,
+    Encoding\JoseEncoder,
+    Parser,
+    Token\Parser as TokenParser
+};
 use OAuth\OAuth2\Token\StdOAuth2Token;
 use OAuth\UserData\Extractor\LazyExtractor;
 
