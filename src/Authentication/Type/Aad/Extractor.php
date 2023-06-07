@@ -2,7 +2,6 @@
 namespace Concrete\Package\AzureActiveDirectory\Authentication\Type\Aad;
 
 use Lcobucci\JWT\{
-    Claim,
     Encoding\JoseEncoder,
     Parser,
     Token\Parser as TokenParser
@@ -93,14 +92,18 @@ class Extractor extends LazyExtractor
     /**
      * Convert a claim into its raw value
      *
-     * @param \Lcobucci\JWT\Claim $claim
+     * @param \Lcobucci\JWT\Claim|string $claim
      *
      * @return string
      */
-    protected function claim(Claim $claim = null)
+    protected function claim($claim = null)
     {
         if (!$claim) {
             return null;
+        }
+
+        if (is_string($claim)) {
+            return $claim;
         }
 
         return $claim->getValue();
