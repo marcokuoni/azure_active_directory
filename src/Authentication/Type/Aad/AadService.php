@@ -4,12 +4,12 @@ namespace Concrete\Package\AzureActiveDirectory\Authentication\Type\Aad;
 
 use OAuth\Common\Http\Exception\TokenResponseException;
 use OAuth\Common\Http\Uri\UriInterface;
-use OAuth\OAuth2\Service\AbstractService;
 use OAuth\OAuth2\Token\StdOAuth2Token;
 use OAuth\OAuth2\Token\TokenInterface;
 use Concrete\Core\Support\Facade\Application as App;
+use Concrete\Core\Authentication\Type\ExternalConcrete\ExternalConcreteService;
 
-class AadService extends AbstractService
+class AadService extends ExternalConcreteService
 {
 
     /** @var string Scope for forcing OIDC */

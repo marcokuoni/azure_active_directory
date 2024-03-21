@@ -11,7 +11,7 @@ class Controller extends Package
 {
 
     protected $appVersionRequired = '9.1.3';
-    protected $pkgVersion = '2.0.4';
+    protected $pkgVersion = '2.0.5';
     protected $pkgHandle = 'azure_active_directory';
     protected $pkgName = 'Azure Active Directory';
     protected $pkgDescription = 'Authorize with Azure Active DIrectory';
