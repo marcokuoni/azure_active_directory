@@ -9,20 +9,20 @@
 </div>
 <div class='form-group'>
     <?=$form->label('url', t('URL'))?>
-    <?=$form->text('url', $data['url'])?>
+    <?=$form->text('url', isset($data['url']) ? $data['url'] : '')?>
 </div>
 <div class='form-group'>
     <?=$form->label('directoryid', t('Tenant'))?>
-    <?=$form->text('directoryid', $data['directoryid'])?>
+    <?=$form->text('directoryid', isset($data['directoryid']) ? $data['directoryid'] : '')?>
 </div>
 <div class='form-group'>
     <?=$form->label('apikey', t('App ID'))?>
-    <?=$form->text('apikey', $data['appid'])?>
+    <?=$form->text('apikey', isset($data['appid']) ? $data['appid'] : '')?>
 </div>
 <div class='form-group'>
     <?=$form->label('apisecret', t('App Secret'))?>
     <div class="input-group">
-        <?=$form->password('apisecret', $data['secret'], array('autocomplete' => 'off'))?>
+        <?=$form->password('apisecret', isset($data['secret']) ? $data['secret'] : '', array('autocomplete' => 'off'))?>
         <span class="input-group-btn">
         <button id="showsecret" class="btn btn-warning" type="button"><?php echo t('Show secret key')?></button>
       </span>
@@ -31,10 +31,9 @@
 <div class='form-group'>
     <div class="input-group">
         <label type="checkbox">
-            <input type="checkbox" name="registration_enabled" value="1" <?= array_get($data, 'registration.enabled', false) ? 'checked' : '' ?>>
+            <input type="checkbox" name="registration_enabled" value="1" <?= isset($data['registration.enabled']) && $data['registration.enabled'] ? 'checked' : '' ?>>
             <span style="font-weight:normal"><?= t('Allow automatic registration') ?></span>
         </label>
-      </span>
     </div>
 </div>
 <div class='form-group registration-group'>
@@ -46,12 +45,11 @@
         foreach ($groups as $group) {
             ?>
             <option value="<?= $group->getGroupID() ?>" <?= intval($group->getGroupID(), 10) === intval(
-                array_get($data, 'registration.group'),
+                isset($data['registration.group']) ? $data['registration.group'] : 0,
                 10) ? 'selected' : '' ?>>
                 <?= $group->getGroupDisplayName(false) ?>
             </option>
         <?php
-
         }
         ?>
     </select>
