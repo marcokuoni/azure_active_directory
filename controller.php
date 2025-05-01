@@ -4,14 +4,13 @@ namespace Concrete\Package\AzureActiveDirectory;
 
 use Concrete\Core\Package\Package;
 use Concrete\Core\Authentication\AuthenticationType;
-use \Concrete\Package\AzureActiveDirectory\Authentication\Type\Aad\ServiceProvider;
+use Concrete\Package\AzureActiveDirectory\Authentication\Type\Aad\ServiceProvider;
 use Loader;
 
 class Controller extends Package
 {
-
     protected $appVersionRequired = '9.1.3';
-    protected $pkgVersion = '2.0.6';
+    protected $pkgVersion = '2.0.7';
     protected $pkgHandle = 'azure_active_directory';
     protected $pkgName = 'Azure Active Directory';
     protected $pkgDescription = 'Authorize with Azure Active DIrectory';
