@@ -31,7 +31,7 @@
 <div class='form-group'>
     <div class="input-group">
         <label type="checkbox">
-            <input type="checkbox" name="registration_enabled" value="1" <?= isset($data['registration.enabled']) && $data['registration.enabled'] ? 'checked' : '' ?>>
+            <input type="checkbox" name="registration_enabled" value="1" <?= isset($data['registration']['enabled']) && $data['registration']['enabled'] ? 'checked' : '' ?>>
             <span style="font-weight:normal"><?= t('Allow automatic registration') ?></span>
         </label>
     </div>
@@ -45,7 +45,7 @@
         foreach ($groups as $group) {
             ?>
             <option value="<?= $group->getGroupID() ?>" <?= intval($group->getGroupID(), 10) === intval(
-                isset($data['registration.group']) ? $data['registration.group'] : 0,
+                isset($data['registration']['group']) ? $data['registration']['group'] : 0,
                 10) ? 'selected' : '' ?>>
                 <?= $group->getGroupDisplayName(false) ?>
             </option>
